@@ -1,16 +1,14 @@
 import express, {Request, Response} from 'express';
 import { Pool } from 'pg';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'jagh',
-    port: 5432,
+    connectionString: process.env.PGURI,
 });
 
 app.use(cors());

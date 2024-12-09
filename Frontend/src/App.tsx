@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './App.css';
+import JournalCard from './JournalCard';
 
 interface Journal {
   id: number;
@@ -23,18 +25,19 @@ function App() {
   }, []);
 
   return (
-    <>
-      <h1>Journaler</h1>
-      <ul>
+    <div className='container'>
+      <h1 className='title'>Journaler</h1>
+      <ul className='list'>
         {journals.map((journal) => (
-          <li key={journal.id}>
-            <h3>{journal.name}</h3>
-            <p><strong>Födelsedatum:</strong> {journal.birthdate}</p>
-            <p><strong>Beskrivning:</strong> {journal.description}</p>
-          </li>
+          <JournalCard
+            key={journal.id}
+            name={journal.name}
+            birthdate={journal.birthdate}
+            description={journal.description}
+          />
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 

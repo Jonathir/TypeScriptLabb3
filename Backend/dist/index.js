@@ -15,14 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const pg_1 = require("pg");
 const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const pool = new pg_1.Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'jagh',
-    port: 5432,
+    connectionString: process.env.PGURI,
 });
 app.use((0, cors_1.default)());
 app.get('/api/journal', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
