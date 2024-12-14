@@ -5,9 +5,16 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
     "target": "ES5",
     "lib": ["dom", "es2015"],
     "jsx": "react-jsx",
     "strict": true
-  }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["cypress"]
 }
