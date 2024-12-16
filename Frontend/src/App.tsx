@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import JournalCard from './JournalCard';
+import Button from './Button';
 
 interface Journal {
   id: number;
@@ -24,6 +25,10 @@ function App() {
       });
   }, []);
 
+  const handleClick = () => {
+    console.log('Knappen klickad');
+  }
+
   return (
     <div className='container'>
       <h1 className='title'>Journaler</h1>
@@ -37,6 +42,7 @@ function App() {
           />
         ))}
       </ul>
+      <Button  label='Klicka här!' onClick={handleClick}/>
     </div>
   );
 }

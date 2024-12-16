@@ -11,10 +11,12 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "target": "ES5",
-    "lib": ["dom", "es2015"],
+    "lib": ["dom", "es2020", "DOM.Iterable"],
     "jsx": "react-jsx",
-    "strict": true
+    "strict": true, 
+    "composite": true,
+    "noEmit": false,
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["cypress"]
+  "exclude": ["cypress", "node_modules"]
 }
