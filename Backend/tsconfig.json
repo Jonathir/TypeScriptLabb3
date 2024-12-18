@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
       "module": "CommonJS",
+      "allowJs": true,
       "target": "ES6",
       "outDir": "./dist",
       "rootDir": "./",
@@ -11,10 +12,13 @@
       "skipLibCheck": true
     },
     "include": [
-        "*.ts"
+        "src/**/*.ts"
     ],
     "exclude": [
-        "node_modules",
-        "dist"
+        "node_modules"
+    ],
+    "lib": [
+      "es2020",
+      "dom"
     ]
   }
