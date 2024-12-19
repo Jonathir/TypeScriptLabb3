@@ -1,20 +1,19 @@
 import express, {Request, Response} from 'express';
 import { Pool } from 'pg';
-import cors from 'cors';
 import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
+const cors = require('cors');
+app.use(cors({ origin: '*' }));
+app.use(express.json());
 
 const pool = new Pool({
     connectionString: process.env.PGURI,
 });
 
-app.use(cors({ origin: '*' }));
-app.use(express.json());
-
-app.get('/api/journal', async (req: Request, res: Response) => {
+app.get('/journal', async (_req, res) => {
     try {
         const result = await pool.query(`
             SELECT
@@ -33,7 +32,7 @@ app.get('/api/journal', async (req: Request, res: Response) => {
     }
 });
 
-app.get('/api/persons', async (req: Request, res: Response) => {
+app.get('/persons', async (_req, res) => {
     try {
         const result = await pool.query('SELECT * FROM persons');
         res.json(result.rows);
@@ -45,8 +44,8 @@ app.get('/api/persons', async (req: Request, res: Response) => {
     }
 });
 
-app.post('/api/persons', async (req: Request, res: Response) => {
-    const { name, birthdate, email } = req.body;
+app.post('/persons', async (_req, res) => {
+    const { name, birthdate, email } = _req.body;
     try {
         const result = await pool.query(
             'INSERT INTO persons (name, birthdate, email) VALUES ($1, $2, $3) RETURNING *',
@@ -59,8 +58,8 @@ app.post('/api/persons', async (req: Request, res: Response) => {
     }
 });
 
-app.post('/api/journal', async (req: Request, res: Response) => {
-    const { person_id, description } = req.body;
+app.post('/journal', async (_req, res) => {
+    const { person_id, description } = _req.body;
     try {
         const result = await pool.query(
             'INSERT INTO journal (person_id, description) VALUES ($1, $2) RETURNING *',

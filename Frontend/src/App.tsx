@@ -1,50 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import JournalCard from './JournalCard';
-import Button from './Button';
+import AddPersonForm from './AddPersonForm';
 
-interface Journal {
+interface Person {
   id: number;
   name: string;
-  description: string;
+  email: string;
   birthdate: string;
 }
 
 function App() {
 
-  const [journals, setJournals] = useState<Journal[]>([]);
+  const [persons, setPersons] = useState<Person[]>([]);
+
+  const fetchPersons = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/persons');
+      setPersons(response.data);
+    } catch (error) {
+      console.error('Error fetching persons: ', error);
+    }
+  };
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/journal')
-      .then(response => {
-        setJournals(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data for journals', error)
-      });
+    fetchPersons();
   }, []);
-
-  const handleClick = () => {
-    console.log('Knappen klickad');
-  }
 
   return (
     <div className='container'>
-      <h1 className='title'>Journaler</h1>
-      <ul className='list'>
-        {journals.map((journal) => (
-          <JournalCard
-            key={journal.id}
-            name={journal.name}
-            birthdate={journal.birthdate}
-            description={journal.description}
-          />
+      <h1>Personer</h1>
+      <AddPersonForm onPersonAdded={fetchPersons} />
+      <ul>
+        {persons.map((person) => (
+          <li key={person.id}>
+            <span data-testid="person-name">{person.name}</span>
+            {' - '}
+            <span data-testid="person-birthdate">{person.birthdate}</span>
+            {' - '}
+            <span data-testid="person-email">{person.email}</span>
+          </li>
         ))}
       </ul>
-      <Button  label='Klicka här!' onClick={handleClick}/>
     </div>
   );
 }
 
-export default App
+export default App;
