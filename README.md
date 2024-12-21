@@ -3,36 +3,47 @@ PGURI=postgresql://user:password@localhost:5432/postgres
 
 I backend:
 npm install
+kompilera backend
 node dist/index.js
 
 I frontend:
 npm install
 npm run dev
+npx cypress open
 
-Vet inte ifall ni behöver göra npx tsc innan men tror inte det.
+Databaserna eller tablesen som ska skapas heter journal och person, det ska vara 2 st. 
 
 Ligger även med en init sql som ni kan använda för att skapa lite låtsasdata:
 psql -U postgres -d ditt_databas_namn -f init.sql
 
+https://github.com/Jonathir/TypeScriptLabb3
+
 Mål som uppnåtts:
 
 Applikationen ska ha ett frontend, ett backend och en databas.
-- Detta uppfylls nu genom att den har alla delar.
+-Detta mål uppnås då jag har ett frontend, ett backend och en databas med 2 tabeller.
 
-Applikationen ska fungera som en sammanhängande helhet. Frontend-delen ska kommunicera med backend-delen som i sin tur ska kommunicera med databasen.
-- Detta uppgylls också då alla delar kommunicerar med varandra
+Varken JavaScript eller JSX får användas. Använd TypeScript (och TSX, om React används) istället. Notera att TypeScript är en stor del av kursen och att TypeScript-insatsen därför ska vara särskilt omfattande.
+-Målet uppnås då jag enbart använder mig av tsx och ts.
 
-Applikationens frontend ska kunna presentera (via GET och SELECT) uppgifter från databasen. Frontend-delen ska hämta JSON från backend-delen. Rendera uppgifterna i HTML-element (använd inte alert eller liknande).
-- Detta uppfylls genom att jag gör ett GET-anrop med SELECT för att hämta uppgifterna jag vill nå från databasen, och detta hämtas sedan i frontend-delen via en useEffect i kombination med axios och sedan renderas det till slut via html-element.
+Testa applikationens funktionalitet med E2E-tester och komponenttester. Notera att mjukvarutester är en stor del av kursen och att testinsatsen därför ska vara särskilt omfattande.
+-Målet uppnås då jag har 2st e2e-tester och även ett komponenttest.
 
-Varken JavaScript eller JSX får användas. Använd TypeScript (och TSX, om React används) istället.
-- Detta uppfylls då jag inte använder varken JavaScript eller JSX, utan istället TSX.
+Alla måste individuellt utveckla en komponent med testdriven utveckling (TDD). Detta innebär att testerna ska skrivas innan koden för respektive komponentfunktionalitet. Rapporten och Git commit-historiken ska visa att testet/testen kom först. Par- eller mob-programmering är inte tillåtet för att uppfylla detta krav.
+-Målet uppnås, egentligen med 2 tillfället, men jag har bara bevis för det ena tillfället. Bevis: https://github.com/Jonathir/TypeScriptLabb3/commit/320f3fe9f75acc5cf51025ecb9952632ca8e3886
 
-Använd props med ett tillhörande interface i åtminstone en komponent.
-- Detta uppfylls så som texten beskriver. 
+Det andra testet som jag gjorde långt innan råkade jag pusha upp samtidigt som koden, som skulle pushats upp efteråt, men eftersom jag inte kan bevisa det så var jag tvungen att göra ett till test så att det syntes, men här är den commiten jag pratar om ändå: https://github.com/Jonathir/TypeScriptLabb3/commit/e53ed7d6d2b19202761ed41f88094f373545e80f
 
-Använd useState med en tillhörande generics-deklaration i åtminstone en komponent. Båda värdet och funktionen som ingår i array:en som returneras av useState måste användas.
-- Detta uppfylls enligt uppgiftens krav också.
+Alla måste individuellt utveckla någon funktionalitet som testas med BDD och Given-When-Then. Eftersom BDD är en utökning av TDD går detta krav att uppfylla samtidigt som TDD-kravet. Par- eller mob-programmering är inte heller tillåtet för att uppfylla detta krav.
+-Detta uppfylls också med hänvisning till den första commit-länken, då jag även här anpassade både TDD och BDD och given-when-then.
+
+Alla måste individuellt skapa åtminstone ett UML-diagram som beskriver någon del av projektet.
+-Detta mål uppnås då jag skapat ett ER-diagram i UML med hjälp av mermaid, som ni kan se live på sidan.
+
+Alla måste individuellt följa relevanta designprinciper såsom DRY.
+-Detta uppnås då jag inte (vad jag märkt) upprepar mig. 
 
 Inkludera en README.md fil som innehåller en kort beskrivning för hur man startar projektet och vilka mål som uppnåtts. 
-- Och i och med denna punkten så uppnår jag kraven för G, om jag inte missat något. :D Detta är en väldigt maget uppgift, jag vet, men som jag skrivit till er innan så har jag hamnat i lite trubbel mentalt och inte lyckats sammanställa uppgiften förrän nu. Men jag har gått över alla punkter i uppgiften flera gånger och det ser inte ut som att jag missar något i mina ögon i alla fall. 
+-Detta uppnås i och med denna filen. 
+
+Jag kan även tillägga att trots att jag mått superdåligt under perioden så tycker jag ändå att jag har lärt mig en bra del om både tester och typescript. Det har varit extremt klurigt att få testmiljöerna att fungera och även få själva testerna att fungera. Likaså att helt ställa om sig när det kommer till typer när man är så van att inte behöva bry sig om det för fem öre. Men tycker kursen har varit kul och lärorik, även om jag önskar att jag inte mådde så dåligt så jag kunde lagt all min energi på att göra alla uppgifter på en lite högre nivå. Jag hoppas att denna uppgift ändå duger för er, detta är liksom det jag hunnit med nu i mån av tid, vet att ni ville ha ett mycket större projekt men som sagt, det blev som det blev. Ber om ursäkt ännu en gång för detta. Men jag har försökt mitt bästa och hoppas det syns. 
