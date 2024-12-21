@@ -4,7 +4,7 @@ PGURI=postgresql://user:password@localhost:5432/postgres
 I backend:
 npm install
 kompilera backend
-node dist/index.js
+npm start
 
 I frontend:
 npm install
