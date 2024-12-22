@@ -6,8 +6,8 @@ Given('the user is on the medical records page', () => {
 });
 
 When('the user fetches the medical record for person {string}', (personName: string) => {
-  cy.get('[data-testid="fetch-medical-records-button"]').click();
-  cy.get('[data-testid="person-name"]').contains(personName).should('exist');
+  cy.get('[data-testid="person-name-1"]').click();
+  cy.get('[data-testid="person-name-1"]').contains(personName).should('exist');
 });
 
 Then('the medical record with description {string} should be visible', (description: string) => {
@@ -19,7 +19,7 @@ Then('the record\'s creation date {string} should be visible', (creationDate: st
 });
 
 Then('the associated person\'s name {string} should be visible', (personName: string) => {
-  cy.get('[data-testid="person-name"]').contains(personName).should('exist');
+  cy.get('[data-testid="person-name-1"]').contains(personName).should('exist');
 });
 
 Then('the associated person\'s birthdate {string} should be visible', (birthdate: string) => {

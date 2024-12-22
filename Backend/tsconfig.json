@@ -9,7 +9,9 @@
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
       "moduleResolution": "node",
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "resolveJsonModule": true,
+      "types": ["node", "express"]
     },
     "include": [
         "src/**/*.ts"
@@ -19,6 +21,7 @@
     ],
     "lib": [
       "es2020",
-      "dom"
+      "dom",
+      "ES6"
     ]
   }

@@ -6,4 +6,4 @@ Feature: Fetch and display medical records
     Then the medical record with description "Routine check-up" should be visible
       And the record's creation date "2024-12-18" should be visible
       And the associated person's name "Anna Svensson" should be visible
-      And the associated person's birthdate "1990-07-22" should be visible
+      And the associated person's birthdate "1985-03-14" should be visible

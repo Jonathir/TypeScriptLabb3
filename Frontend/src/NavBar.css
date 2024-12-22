@@ -1,0 +1,34 @@
+/* NavBar.css */
+nav {
+    padding: 1rem;
+    background: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+    position: fixed; /* Makes the navbar fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensures it appears above other content */
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}

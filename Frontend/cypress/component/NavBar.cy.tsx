@@ -13,7 +13,7 @@ describe('NavBar Component', () => {
   
       cy.contains('Personer').should('be.visible');
       cy.contains('Journalöversikt').should('be.visible');
-      cy.contains('Om oss').should('be.visible');
+      cy.contains('UML').should('be.visible');
   
       cy.get('a[href="/"]').should('exist');
       cy.get('a[href="/person-overview"]').should('exist');

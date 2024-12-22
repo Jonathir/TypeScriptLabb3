@@ -72,6 +72,54 @@ app.post('/journal', async (_req, res) => {
     }
 });
 
+app.get('/persons/:id/journal', async (_req, res) => {
+    const personId = _req.params.id;
+    try {
+        const result = await pool.query(`
+            SELECT
+                journal.id AS journal_id,
+                journal.description,
+                journal.created_at,
+                persons.id AS person_id,
+                persons.name AS person_name,
+                persons.birthdate AS person_birthdate,
+                persons.email AS person_email
+            FROM journal
+            INNER JOIN persons ON journal.person_id = persons.id
+            WHERE persons.id = $1`, [personId]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+app.get('/journal/:id', async (_req, res) => {
+    const journalId = _req.params.id;
+    try {
+        const result = await pool.query(`
+            SELECT
+                journal.id AS journal_id,
+                journal.description,
+                journal.created_at,
+                persons.id AS person_id,
+                persons.name AS person_name,
+                persons.birthdate AS person_birthdate,
+                persons.email AS person_email
+            FROM journal
+            INNER JOIN persons ON journal.person_id = persons.id
+            WHERE journal.id = $1`, [journalId]);
+        if (result.rows.length === 0) {
+            return res.status(404).send('Journal not found');
+        }
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`)
 });
