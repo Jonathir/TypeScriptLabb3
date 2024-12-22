@@ -18,6 +18,8 @@ psql -U postgres -d ditt_databas_namn -f init.sql
 
 https://github.com/Jonathir/TypeScriptLabb3
 
+-- När det kommer till UML-diagrammet, jag har skrivit det i mermaid, men av någon märklig anledning så behöver man uppdatera manuellt varje gång man går in på fliken, annars står det bara "syntax error". --
+
 Mål som uppnåtts:
 
 Applikationen ska ha ett frontend, ett backend och en databas.
