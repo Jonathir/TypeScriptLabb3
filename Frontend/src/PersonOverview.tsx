@@ -93,7 +93,7 @@ const PersonOverview: React.FC = () => {
     return (
         <div 
             data-testid="medical-records-page"
-            style={{paddingTop: '4rem'}}>
+            style={{paddingTop: '30rem'}}>
             <h2>Persons Overview</h2>
             <div style={{ display: 'flex', gap: '20px' }}>
                 <div>
